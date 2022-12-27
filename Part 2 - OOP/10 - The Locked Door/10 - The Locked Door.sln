@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10 - The Locked Door", "10 - The Locked Door.csproj", "{0F8C5319-5841-45AD-848D-344D70EAE91B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F8C5319-5841-45AD-848D-344D70EAE91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F8C5319-5841-45AD-848D-344D70EAE91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F8C5319-5841-45AD-848D-344D70EAE91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F8C5319-5841-45AD-848D-344D70EAE91B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {383F648C-63E3-4BC9-9629-DDB97186738B}
+	EndGlobalSection
+EndGlobal

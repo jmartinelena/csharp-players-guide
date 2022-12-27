@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16 - Robotic Interface", "16 - Robotic Interface.csproj", "{3709545A-44A8-4025-BED8-24E15E9E4121}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3709545A-44A8-4025-BED8-24E15E9E4121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3709545A-44A8-4025-BED8-24E15E9E4121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3709545A-44A8-4025-BED8-24E15E9E4121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3709545A-44A8-4025-BED8-24E15E9E4121}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE892024-D62F-4D08-967E-B87774D271D5}
+	EndGlobalSection
+EndGlobal
