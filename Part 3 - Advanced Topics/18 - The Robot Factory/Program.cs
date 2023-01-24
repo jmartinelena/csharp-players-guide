@@ -13,6 +13,7 @@ while (true)
     // I tried making a method with the robot's desired property as a parameter, and then assign a value to it
     // within the method, but I couldn't get it to work.
     // Reference: https://stackoverflow.com/questions/62401329/dynamic-properties-passed-as-c-sharp-method-parameters
+    //            https://stackoverflow.com/questions/11178864/pass-property-itself-to-function-as-parameter-in-c-sharp
     Console.Write("Do you want to name the robot? ");
     if (Console.ReadLine() != "no")
     {
