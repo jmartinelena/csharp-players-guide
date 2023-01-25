@@ -38,5 +38,14 @@ namespace FinalBattle
                 _heroPartyTurn = !_heroPartyTurn;
             }
         }
+
+        public Party GetPartyFor(Character character)
+        {
+            return HeroParty.Characters.Contains(character) ? HeroParty : EnemyParty;
+        }
+        public Party GetEnemyPartyFor(Character character)
+        {
+            return HeroParty.Characters.Contains(character) ? EnemyParty : HeroParty;
+        }
     }
 }

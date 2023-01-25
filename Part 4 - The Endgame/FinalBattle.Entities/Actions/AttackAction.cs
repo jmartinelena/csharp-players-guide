@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FinalBattle.Logic
+{
+    public class AttackAction: IAction
+    {
+        private IAttack _attack;
+        private Character _target;
+
+        public AttackAction(IAttack attack, Character target)
+        {
+            _attack = attack;
+            _target = target;
+        }
+
+        public string Run(Battle battle, Character actor)
+        {
+            return $"{actor.Name} used {_attack.Name} on {_target.Name}.";
+        }
+    }
+}

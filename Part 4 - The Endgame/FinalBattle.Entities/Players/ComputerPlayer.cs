@@ -11,7 +11,7 @@ namespace FinalBattle.Logic
         public IAction ChooseAction(Battle battle, Character actor)
         {
             Thread.Sleep(500);
-            return new DoNothingAction();
+            return new AttackAction(actor.StandardAttack, battle.GetEnemyPartyFor(actor).Characters[0] );
         }
     }
 }

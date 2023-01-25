@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalBattle.Logic.Actions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,12 @@ namespace FinalBattle.Logic
     public class Character
     {
         public string Name { get; init; }
+        public IAttack StandardAttack { get; init; }
 
-        public Character(string name)
+        public Character(string name, IAttack attack)
         {
             Name = name;
-        }
-
-        public string DoNothing()
-        {
-            return $"{Name} did NOTHING.";
+            StandardAttack = attack;
         }
     }
 }
