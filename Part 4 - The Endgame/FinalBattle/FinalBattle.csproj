@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinalBattle.Common\FinalBattle.Common.csproj" />
+    <ProjectReference Include="..\FinalBattle.Entities\FinalBattle.Logic.csproj" />
   </ItemGroup>
 
 </Project>
