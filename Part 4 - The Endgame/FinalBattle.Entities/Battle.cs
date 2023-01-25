@@ -33,8 +33,25 @@ namespace FinalBattle
 
                     Console.WriteLine(party.Player.ChooseAction(this, character).Run(this, character));
                     Console.WriteLine();
+
+                    if (BattleIsOver) break;
                 }
 
+                if (HeroParty.Characters.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("The heroes have lost, and the Uncoded One's forces have prevailed...");
+                    Console.ResetColor();
+                    break;
+                }
+                else if (EnemyParty.Characters.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("The heroes have won, and the Uncoded One's evil reign is over!");
+                    Console.ResetColor();
+                    break;
+                }
+                
                 _heroPartyTurn = !_heroPartyTurn;
             }
         }
@@ -47,5 +64,6 @@ namespace FinalBattle
         {
             return HeroParty.Characters.Contains(character) ? EnemyParty : HeroParty;
         }
+        public bool BattleIsOver => HeroParty.Characters.Count == 0 || EnemyParty.Characters.Count == 0;
     }
 }
