@@ -9,5 +9,6 @@ namespace FinalBattle.Logic.Actions
     public class Punch : IAttack
     {
         public string Name => "PUNCH";
+        public int Damage => 1;
     }
 }

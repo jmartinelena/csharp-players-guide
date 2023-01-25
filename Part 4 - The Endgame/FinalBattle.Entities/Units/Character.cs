@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace FinalBattle.Logic
 {
-    public class Character
+    public abstract class Character
     {
-        public string Name { get; init; }
-        public IAttack StandardAttack { get; init; }
+        public abstract string Name { get; }
+        public abstract IAttack StandardAttack { get; }
+        public abstract int MaxHP { get; }
+        public abstract int CurrentHP { get; set; }
 
-        public Character(string name, IAttack attack)
-        {
-            Name = name;
-            StandardAttack = attack;
-        }
     }
 }

@@ -9,5 +9,6 @@ namespace FinalBattle.Logic.Actions
     public class BoneCrunch : IAttack
     {
         public string Name => "BONE CRUNCH";
+        public int Damage => new Random().Next(2);
     }
 }

@@ -19,7 +19,11 @@ namespace FinalBattle.Logic
 
         public string Run(Battle battle, Character actor)
         {
-            return $"{actor.Name} used {_attack.Name} on {_target.Name}.";
+            int damageDealt = _target.CurrentHP > 0 ? actor.StandardAttack.Damage : 0;
+            _target.CurrentHP -= damageDealt;
+            return $"{actor.Name} used {_attack.Name} on {_target.Name}." +
+                $"\n{_attack.Name} dealt {damageDealt} damage to {_target.Name}." +
+                $"\n{_target.Name} is now at {_target.CurrentHP}/{_target.MaxHP} HP.";
         }
     }
 }
