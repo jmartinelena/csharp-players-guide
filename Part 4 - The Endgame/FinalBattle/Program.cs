@@ -1,6 +1,11 @@
 ﻿using FinalBattle;
+using FinalBattle.Common;
 
-List<Character> heroParty = new List<Character>{ new Character("SKELETON") };
+string name = ConsoleHelper.Ask("True Programmer, what is your name?");
+
+Character trueProgrammer = new Character(name);
+
+List<Character> heroParty = new List<Character>{ trueProgrammer };
 List<Character> enemyParty = new List<Character>{ new Character("SKELETON") };
 
 bool heroPartyTurn = true;

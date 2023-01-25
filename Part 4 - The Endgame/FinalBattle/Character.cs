@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalBattle
 {
-    internal class Character
+    public class Character
     {
         public string Name { get; init; }
 
