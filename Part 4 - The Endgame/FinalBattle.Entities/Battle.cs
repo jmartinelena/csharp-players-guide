@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalBattle.Common;
 using FinalBattle.Logic;
+using FinalBattle.Logic.Actions;
 
 namespace FinalBattle
 {
@@ -38,7 +40,7 @@ namespace FinalBattle
                         Console.WriteLine($"It is {character.Name}'s turn...");
                         Console.ResetColor();
 
-                        Console.WriteLine(party.Player.ChooseAction(this, character).Run(this, character));
+                        Console.WriteLine(party.Player.ChooseAction(this, character, GetChoice(party.Player, character)).Run(this, character));
                         Console.WriteLine();
 
                         if (BattleIsOver) break;
@@ -82,5 +84,52 @@ namespace FinalBattle
             return HeroParty.Characters.Contains(character) ? CurrentEnemyParty : HeroParty;
         }
         public bool BattleIsOver => HeroParty.Characters.Count == 0 || CurrentEnemyParty.Characters.Count == 0;
+
+        public MenuChoice GetChoice(IPlayer player, Character actor)
+        {
+            if (player is ComputerPlayer)
+            {
+                return new MenuChoice(ActionChoice.DoNothing, null);
+            }
+            else
+            {
+                Console.WriteLine($"\n\t1 - Standard Attack ({actor.StandardAttack.Name})\n\t2 - Do nothing (skips turn)");
+                
+                int result;
+                do
+                {
+                    string answer = ConsoleHelper.Ask("What do you want to do?");
+                    int.TryParse(answer, out result);
+                    if (result != 1 && result != 2)
+                    {
+                        Console.WriteLine("Invalid answer, try again...");
+                    }
+                } while (result != 1 && result != 2);
+
+                if (result == 2) return new MenuChoice(ActionChoice.DoNothing, null);
+                else
+                {
+                    List<Character> potentialTargets = GetEnemyPartyFor(actor).Characters;
+                    
+                    for (int index = 0; index < potentialTargets.Count; index++)
+                    {
+                        Console.WriteLine($"\t{index + 1} - {potentialTargets[index].Name}");
+                    }
+                    
+                    int attackChoice;
+                    do
+                    {
+                        string answer = ConsoleHelper.Ask("Who do you wanna attack?");
+                        int.TryParse(answer, out attackChoice);
+                        if (attackChoice < 1 || attackChoice > potentialTargets.Count)
+                        {
+                            Console.WriteLine("Invalid answer, try again...");
+                        }
+                    } while (attackChoice < 1 || attackChoice > potentialTargets.Count);
+
+                    return new MenuChoice(ActionChoice.Attack, potentialTargets[attackChoice - 1]);
+                }
+            }
+        }
     }
 }

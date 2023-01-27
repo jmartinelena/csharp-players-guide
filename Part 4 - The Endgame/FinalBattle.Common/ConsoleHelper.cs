@@ -27,7 +27,7 @@ namespace FinalBattle.Common
                 }
                 else
                 {
-                    Console.WriteLine("Invalid name, try again.");
+                    Console.WriteLine("Invalid answer, try again.");
                 }
             }
         }

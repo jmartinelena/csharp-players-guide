@@ -5,22 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalBattle.Logic
+namespace FinalBattle.Logic.Players
 {
-    public class ComputerPlayer : IPlayer
+    public class HumanPlayer : IPlayer
     {
         public IAction ChooseAction(Battle battle, Character actor, MenuChoice choice)
         {
             Thread.Sleep(500);
 
-            List<Character> potentialTargets = battle.GetEnemyPartyFor(actor).Characters;
-
-            if (potentialTargets.Count > 0)
-            {
-                return new AttackAction(actor.StandardAttack, battle.GetEnemyPartyFor(actor).Characters[0]);
-            } else
+            if (choice.Target == null || choice.Choice == ActionChoice.DoNothing)
             {
                 return new DoNothingAction();
+            }
+            else
+            {
+                return new AttackAction(actor.StandardAttack, choice.Target);
             }
         }
     }

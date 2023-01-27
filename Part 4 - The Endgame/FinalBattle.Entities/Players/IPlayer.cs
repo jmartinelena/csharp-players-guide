@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalBattle.Logic.Actions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace FinalBattle.Logic
 {
     public interface IPlayer
     {
-        IAction ChooseAction(Battle battle, Character actor);
+        IAction ChooseAction(Battle battle, Character actor, MenuChoice choice);
     }
 }
