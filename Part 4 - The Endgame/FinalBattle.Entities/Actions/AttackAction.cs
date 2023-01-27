@@ -26,7 +26,7 @@ namespace FinalBattle.Logic
                 $"\n{_attack.Name} dealt {damageDealt} damage to {_target.Name}." +
                 $"\n{_target.Name} is now at {_target.CurrentHP}/{_target.MaxHP} HP.";
 
-            if (_target.CurrentHP == 0)
+            if (_target.CurrentHP <= 0)
             {
                 battle.GetPartyFor(_target).Characters.Remove(_target);
                 result += $"\n{_target.Name} has been defeated!";
