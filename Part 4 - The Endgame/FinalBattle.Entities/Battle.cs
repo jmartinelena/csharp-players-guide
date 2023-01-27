@@ -36,6 +36,8 @@ namespace FinalBattle
 
                     foreach (Character character in party.Characters)
                     {
+                        DisplayInfo(character);
+
                         Console.ForegroundColor = _heroPartyTurn ? ConsoleColor.Blue : ConsoleColor.Red;
                         Console.WriteLine($"It is {character.Name}'s turn...");
                         Console.ResetColor();
@@ -130,6 +132,31 @@ namespace FinalBattle
                     return new MenuChoice(ActionChoice.Attack, potentialTargets[attackChoice - 1]);
                 }
             }
+        }
+
+        public void DisplayInfo(Character actor)
+        {
+            Console.WriteLine("=====================================BATTLE=====================================");
+            
+            foreach (Character character in HeroParty.Characters)
+            {
+                if (character == actor) Console.ForegroundColor = ConsoleColor.Yellow;
+                string info = $"{character.Name}                 {character.CurrentHP}/{character.MaxHP} HP";
+                Console.WriteLine($"{info, -80}");
+                Console.ResetColor();
+            }
+
+            Console.WriteLine("---------------------------------------VS---------------------------------------");
+
+            foreach (Character character in CurrentEnemyParty.Characters)
+            {
+                if (character == actor) Console.ForegroundColor = ConsoleColor.Yellow;
+                string info = $"{character.Name}                 {character.CurrentHP}/{character.MaxHP} HP";
+                Console.WriteLine($"{info, 80}");
+                Console.ResetColor();
+            }
+
+            Console.WriteLine("================================================================================\n");
         }
     }
 }
