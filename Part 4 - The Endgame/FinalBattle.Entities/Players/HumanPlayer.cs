@@ -16,7 +16,7 @@ namespace FinalBattle.Logic.Players
             IAction result = choice.Choice switch
             {
                 ActionChoice.Attack when choice.Target != null => new AttackAction(actor.Attacks[choice.ChoiceIndex], choice.Target),
-                ActionChoice.UseItem => new DrinkPotionAction((HpPotion)battle.GetPartyFor(actor).Bag[choice.ChoiceIndex], actor),
+                ActionChoice.UseItem => new UseItemAction(battle.GetPartyFor(actor).Bag[choice.ChoiceIndex], actor),
                 _ => new DoNothingAction()
 
             };

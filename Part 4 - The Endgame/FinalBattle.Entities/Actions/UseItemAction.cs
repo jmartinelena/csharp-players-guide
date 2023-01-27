@@ -6,17 +6,25 @@ using System.Threading.Tasks;
 
 namespace FinalBattle.Logic.Actions
 {
-    public abstract class UseItemAction: IAction
+    public class UseItemAction: IAction
     {
-        protected IItem _item;
-        protected Character _target;
-
-        public abstract string Run(Battle battle, Character actor);
-
+        private IItem _item;
+        private Character _target;
         public UseItemAction(IItem item, Character target)
         {
             _item = item;
             _target = target;
         }
+
+        public string Run(Battle battle, Character actor)
+        {
+            List<IItem> bag = battle.GetPartyFor(actor).Bag;
+
+            string result = _item.Use(actor, _target);
+
+            bag.Remove(_item);
+            return result;
+        }
+
     }
 }

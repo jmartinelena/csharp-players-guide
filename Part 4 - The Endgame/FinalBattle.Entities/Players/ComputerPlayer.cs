@@ -17,7 +17,7 @@ namespace FinalBattle.Logic
 
             if (battle.GetPartyFor(actor).Bag.Count > 0 && actor.CurrentHP <= actor.MaxHP / 2 )
             {
-                return new DrinkPotionAction((HpPotion)battle.GetPartyFor(actor).Bag[choice.ChoiceIndex], actor);
+                return new UseItemAction(battle.GetPartyFor(actor).Bag[choice.ChoiceIndex], actor);
             }
             
             if (potentialTargets.Count > 0)

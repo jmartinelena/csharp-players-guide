@@ -10,5 +10,7 @@ namespace FinalBattle.Logic.Actions
     {
         public string Name { get; }
         public string Description { get; }
+
+        public string Use(Character actor, Character target);
     }
 }
