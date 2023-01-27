@@ -15,9 +15,12 @@ namespace FinalBattle.Logic
 
             List<Character> potentialTargets = battle.GetEnemyPartyFor(actor).Characters;
 
-            if (battle.GetPartyFor(actor).Bag.Count > 0 && actor.CurrentHP <= actor.MaxHP / 2 )
+            if (battle.GetPartyFor(actor).Bag.Count > 0 && CheckForPotion().Item1 && actor.CurrentHP <= actor.MaxHP / 2 )
             {
-                return new UseItemAction(battle.GetPartyFor(actor).Bag[choice.ChoiceIndex], actor);
+                if (new Random().Next(0, 5) == 0)
+                {
+                    return new UseItemAction(CheckForPotion().Item2!, actor);
+                }
             }
             
             if (potentialTargets.Count > 0)
@@ -26,6 +29,15 @@ namespace FinalBattle.Logic
             } else
             {
                 return new DoNothingAction();
+            }
+
+            (bool, HpPotion? potion) CheckForPotion()
+            {
+                foreach (IItem item in battle.GetPartyFor(actor).Bag)
+                {
+                    if (item is HpPotion potion) return (true, potion);
+                }
+                return (false, null);
             }
         }
     }
