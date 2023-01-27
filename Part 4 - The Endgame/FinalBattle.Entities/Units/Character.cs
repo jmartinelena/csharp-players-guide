@@ -10,7 +10,7 @@ namespace FinalBattle.Logic
     public abstract class Character
     {
         public abstract string Name { get; }
-        public abstract IAttack StandardAttack { get; }
+        public abstract List<IAttack> Attacks { get; }
         public abstract int MaxHP { get; }
         public abstract int CurrentHP { get; set; }
 

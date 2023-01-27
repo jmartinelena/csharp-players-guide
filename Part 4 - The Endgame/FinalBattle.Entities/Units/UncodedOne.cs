@@ -10,7 +10,7 @@ namespace FinalBattle.Logic.Units
     public class UncodedOne : Character
     {
         public override string Name => "The Uncoded One";
-        public override IAttack StandardAttack => new UnravelingAttack();
+        public override List<IAttack> Attacks => new List<IAttack> { new UnravelingAttack() };
         public override int MaxHP => 15;
         public override int CurrentHP { get; set; } = 15;
     }

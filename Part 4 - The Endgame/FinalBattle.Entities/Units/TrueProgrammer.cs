@@ -10,7 +10,7 @@ namespace FinalBattle.Logic.Units
     public class TrueProgrammer : Character
     {
         public override string Name { get; }
-        public override IAttack StandardAttack { get; } = new Punch();
+        public override List<IAttack> Attacks { get; } = new List<IAttack> { new Punch() };
         public override int MaxHP { get; } = 25;
         public override int CurrentHP { get; set; } = 25;
 

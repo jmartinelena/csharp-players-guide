@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalBattle.Logic.Actions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,13 @@ namespace FinalBattle.Logic
     {
         public IPlayer Player { get; init; }
         public List<Character> Characters { get; init; }
+        public List<IItem> Bag { get; }
 
-        public Party(IPlayer player, List<Character> characters)
+        public Party(IPlayer player, List<Character> characters, List<IItem> bag)
         {
             Player = player;
             Characters = characters;
+            Bag = bag;
         }
     }
 }

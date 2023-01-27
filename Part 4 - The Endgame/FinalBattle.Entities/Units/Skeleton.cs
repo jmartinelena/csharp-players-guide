@@ -9,7 +9,7 @@ namespace FinalBattle.Logic.Units
     public class Skeleton : Character
     {
         public override string Name => "SKELETON";
-        public override IAttack StandardAttack { get; } = new BoneCrunch();
+        public override List<IAttack> Attacks { get; } = new List<IAttack> { new BoneCrunch() };
         public override int MaxHP => 6;
         public override int CurrentHP { get; set; } = 6;
     }

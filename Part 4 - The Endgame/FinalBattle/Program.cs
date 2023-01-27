@@ -44,12 +44,14 @@ else
 }
 
 
-Party heroParty = new Party(player1, new List<Character> { trueProgrammer });
+Party heroParty = new Party(player1, 
+    new List<Character> { trueProgrammer }, 
+    new List<IItem> { new HpPotion(), new HpPotion() , new HpPotion() });
 
 List<Party> enemyParties = new List<Party> { 
-    new Party(player2, new List<Character> { new Skeleton() }),
-    new Party(player2, new List<Character> { new Skeleton(), new Skeleton() }),
-    new Party(player2, new List<Character> {new UncodedOne()}) 
+    new Party(player2, new List<Character> { new Skeleton() }, new List<IItem> { new HpPotion() } ),
+    new Party(player2, new List<Character> { new Skeleton(), new Skeleton() }, new List < IItem > { new HpPotion() }),
+    new Party(player2, new List<Character> {new UncodedOne() }, new List < IItem > { new HpPotion() }) 
 };
 
 Battle battle = new Battle(heroParty, enemyParties);

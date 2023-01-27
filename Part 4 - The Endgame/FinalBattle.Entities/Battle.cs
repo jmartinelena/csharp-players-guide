@@ -91,25 +91,29 @@ namespace FinalBattle
         {
             if (player is ComputerPlayer)
             {
-                return new MenuChoice(ActionChoice.DoNothing, null);
+                return new MenuChoice(ActionChoice.DoNothing, null, 0);
             }
             else
             {
-                Console.WriteLine($"\n\t1 - Standard Attack ({actor.StandardAttack.Name})\n\t2 - Do nothing (skips turn)");
+                Console.WriteLine($"\n\t1 - Standard Attack ({actor.Attacks[0].Name})" +
+                    $"\n\t2 - Use an item" +
+                    $"\n\t3 - Do nothing (skips turn)");
                 
                 int result;
                 do
                 {
                     string answer = ConsoleHelper.Ask("What do you want to do?");
                     int.TryParse(answer, out result);
-                    if (result != 1 && result != 2)
+                    if (!(new int[] {1,2,3}).Contains(result))
                     {
                         Console.WriteLine("Invalid answer, try again...");
                     }
-                } while (result != 1 && result != 2);
+                } while (!(new int[] { 1, 2, 3 }).Contains(result));
 
-                if (result == 2) return new MenuChoice(ActionChoice.DoNothing, null);
-                else
+                ActionChoice resultChoice = (ActionChoice)result;
+
+                if (resultChoice == ActionChoice.DoNothing) return new MenuChoice(ActionChoice.DoNothing, null, 0);
+                else if (resultChoice == ActionChoice.Attack)
                 {
                     List<Character> potentialTargets = GetEnemyPartyFor(actor).Characters;
                     
@@ -129,7 +133,29 @@ namespace FinalBattle
                         }
                     } while (attackChoice < 1 || attackChoice > potentialTargets.Count);
 
-                    return new MenuChoice(ActionChoice.Attack, potentialTargets[attackChoice - 1]);
+                    return new MenuChoice(ActionChoice.Attack, potentialTargets[attackChoice - 1], 0);
+                }
+                else
+                {
+                    List<IItem> bag = GetPartyFor(actor).Bag;
+
+                    for (int index = 0; index < bag.Count; index++)
+                    {
+                        Console.WriteLine($"\t{index + 1} - {bag[index].Name} - {bag[index].Description}");
+                    }
+
+                    int itemChoice;
+                    do
+                    {
+                        string answer = ConsoleHelper.Ask("Which one do you wanna use?");
+                        int.TryParse(answer, out itemChoice);
+                        if (itemChoice < 1 || itemChoice > bag.Count)
+                        {
+                            Console.WriteLine("Invalid answer, try again...");
+                        }
+                    } while (itemChoice < 1 || itemChoice > bag.Count);
+
+                    return new MenuChoice(ActionChoice.UseItem, actor, itemChoice - 1);
                 }
             }
         }

@@ -13,14 +13,15 @@ namespace FinalBattle.Logic.Players
         {
             Thread.Sleep(500);
 
-            if (choice.Target == null || choice.Choice == ActionChoice.DoNothing)
+            IAction result = choice.Choice switch
             {
-                return new DoNothingAction();
-            }
-            else
-            {
-                return new AttackAction(actor.StandardAttack, choice.Target);
-            }
+                ActionChoice.Attack when choice.Target != null => new AttackAction(actor.Attacks[choice.ChoiceIndex], choice.Target),
+                ActionChoice.UseItem => new DrinkPotionAction((HpPotion)battle.GetPartyFor(actor).Bag[choice.ChoiceIndex], actor),
+                _ => new DoNothingAction()
+
+            };
+
+            return result;
         }
     }
 }
